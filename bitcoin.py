@@ -1,17 +1,8 @@
 from hashlib import sha256
 import time
 from random import randint
+import utils as ut
 
-class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
 
 def mine(complexity=3):
     start_time = time.time()
@@ -22,7 +13,8 @@ def mine(complexity=3):
         nonce += 1
         sha = sha256(str(nonce).encode('utf-8')).hexdigest()
 
-    print(f'{bcolors.OKGREEN}Mined block{bcolors.ENDC} {sha[:complexity]}{sha[complexity:]} with nonce {nonce}')
+    print(f'{ut.bcolors.OKGREEN}Mined block{ut.bcolors.ENDC} {sha[:complexity]}{sha[complexity:]} with nonce {nonce}')
+
     end_time = time.time()
 
     return end_time - start_time
